@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @event.author %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @event.body %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<% unless @event.comments.empty? %>
+  <h2><%= pluralize(@event.comments.size, 'comment') %></h2>
+
+  <div id="comments">
+  <% for comment in @event.comments %>
+    <div class="comment">
+      <strong><%= h(comment.author) %></strong>
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+      <%=simple_format comment.body %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+
+<h3>Add your comment:</h3>
+<%= render :partial => 'comments/form' %>
