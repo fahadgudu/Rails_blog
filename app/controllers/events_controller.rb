@@ -19,6 +19,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.build_image
+    @event.build_attachment
   end
 
   # GET /events/1/edit
@@ -73,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :author, :body, :start_time)
+      params.require(:event).permit(:title, :author, :body, :start_time, attachment_attributes: [:data], image_attributes: [:data])
     end
 end

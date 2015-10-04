@@ -1,23 +1,43 @@
-<p id="notice"><%= notice %></p>
-
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href=<%= root_url %>>Killer Blog</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Home', root_url %></li>
+        <li class="active"><%= link_to 'Blogs', posts_path %>
+        <li><%= link_to 'Events', events_path %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h2>
+    <strong>
+      <%= @post.title %>
+    </strong>
+  </h2> 
+  <h6>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+  </h6>
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  <i><%= @post.author %> added <%= @post.created_at.strftime('%b %d, %Y at %H:%M') %></i>
 </p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+     <%= @post.body %>
+    </p>
+    <% unless @post.image==nil %>
+      <%= image_tag @post.image.data_url.to_s %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-
+<p id="notice" class="bg-info h3"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
 <% unless @post.comments.empty? %>
   <h2><%= pluralize(@post.comments.size, 'comment') %></h2>
 
@@ -31,7 +51,9 @@
   <% end %>
   </div>
 <% end %>
-
+  </div>
+</div>
 
 <h3>Add your comment:</h3>
 <%= render :partial => 'comments/form' %>
+</div>
