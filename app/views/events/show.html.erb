@@ -34,7 +34,7 @@
 </p>
 <div id="paintings">
     <div class="painting">
-      <% unless @post.image==nil %>
+      <% unless @event.image==nil %>
       <%= image_tag @event.image.data_url.to_s %>
       <% end %>
     </div>
