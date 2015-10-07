@@ -1,3 +1,10 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Include Select2 CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css" />
+<!-- CSS to make Select2 fit in with Bootstrap 3.x -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2-bootstrap.min.css" />
+<!-- Include Select2 JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -6,8 +13,8 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to 'Home', root_url %></li>
-        <li><%= link_to 'Blogs', posts_path %>
-        <li><%= link_to 'Events', events_path %>
+        <li><%= link_to 'Blogs', posts_path %></li>
+        <li><%= link_to 'Events', events_path %></li>
       </ul>
     </div>
   </div>
@@ -51,3 +58,30 @@
     <% end %>
   </tbody>
 </table>
+<!--
+<form id="select2Form" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-4 control-label">Favorite color using tags</label>
+        <div class="col-xs-6">
+            <input class="form-control" name="colors-tags"
+                   multiple data-placeholder="Choose 2-4 colors" />
+        </div>
+    </div>
+</form>
+-->
+<script type="text/javascript">
+var namer = [];
+<%@tags.each do |tag| %>
+    namer.push(<%= sanitize(tag.name.to_json) %>); 
+<% end %>
+
+$(document).ready(function() {
+    $('#select2Form')
+        .find('[name="colors-tags"]')
+            .select2({
+                // Specify tags
+                tags: namer
+            })
+            .end()
+});
+</script>

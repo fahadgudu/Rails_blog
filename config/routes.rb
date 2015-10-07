@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :assets
+  resources :tags, only: [:show]
+  
   resources :posts do
     resources :comments, only: [:create, :new, :index]
   end

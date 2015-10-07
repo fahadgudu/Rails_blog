@@ -1,3 +1,4 @@
+require './lib/pdf_renderer'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -14,11 +15,20 @@ class PostsController < ApplicationController
     @commentable = @post
     @comments = @commentable.comments
     @comment = Comment.new
+    @post_tags = Tag.where(id: @post.tag_ids)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPdf.new(@post)
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    @tags = Tag.all
     @post.build_image
   end
 
@@ -30,6 +40,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.tag_ids = params[:tag_ids]
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
