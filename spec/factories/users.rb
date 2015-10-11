@@ -1,25 +1,20 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  title      :string
-#  author     :string
-#  body       :text
+#  username   :string
+#  surname    :string
+#  city       :string
+#  age        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  tag_ids    :integer          default([]), is an Array
 #
 
 FactoryGirl.define do
-  factory :post do
-    title "Title"
-    body "Body"
-    author "User"
-
-    factory :invalid_post do
-      body nil
-    end
+  factory :user do
+    
   end
 
 end

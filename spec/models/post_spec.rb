@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  author     :string
+#  body       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  tag_ids    :integer          default([]), is an Array
+#
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do

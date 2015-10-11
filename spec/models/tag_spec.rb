@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id   :integer          not null, primary key
+#  name :string
+#  slug :string
+#
+
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
