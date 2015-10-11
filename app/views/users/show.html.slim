@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      a class="navbar-brand" href=root_url Killer Blog
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        li  = link_to 'Home', root_url
+        li  = link_to 'Blogs', posts_path 
+        li  = link_to 'Events', events_path
+        li class="active" = link_to 'Users', users_path
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h2>
+    <strong>
+      = @user.surname
+    </strong>
+  </h2> 
+<p>
+   i
+    ="Created " 
+    = @user.created_at.strftime('%b %d, %Y at %H:%M')
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+     = @user.surname
+     =" with username "
+     i
+      b
+       = @user.username
+     =" from "
+     =@user.city
+     =" in age of "
+     =@user.age
+    </p>
+    -unless @user.image==nil
+      = image_tag @user.image.data_url.to_s
+  </div>
+</div>
+
+-if @user_tags
+<div class="panel panel-info">
+  <div class="panel-heading">Tags:</div>
+  <div class="panel-body">
+        -@user_tags.each do |tag|
+          =link_to tag.name, tag
+          =" "
+  </div>
+</div>
+<p id="notice" class="bg-info h3">
+  = notice
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+   -unless @user.comments.empty?
+  <h2>
+    = pluralize(@user.comments.size, 'comment')
+  </h2>
+
+  <div id="comments">
+   -for comment in @user.comments
+    <div class="comment">
+      <strong>
+        = h(comment.author)
+      </strong>
+      <em>
+        =" on "
+        = comment.created_at.strftime('%b %d, %Y at %H:%M')
+      </em>
+      =simple_format comment.body
+    </div>
+  </div>
+</div>
+</div>
+
+<h3>Add your comment:</h3>
+ = render :partial => 'comments/form'
+</div>

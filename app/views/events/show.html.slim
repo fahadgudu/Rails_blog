@@ -1,0 +1,88 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      a class="navbar-brand" href=root_url Killer Blog
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        li  = link_to 'Home', root_url
+        li = link_to 'Blogs', posts_path 
+        li class="active" = link_to 'Events', events_path
+        li = link_to 'Users', users_path
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h2>
+    <strong>
+      = @event.title
+    </strong>
+  </h2> 
+  <h6>
+    = link_to 'Edit', edit_event_path(@event)
+  </h6>
+
+<p>
+  <i> 
+    =@event.author 
+    =" added "
+    =@event.created_at.strftime('%b %d, %Y at %H:%M')
+  </i>
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+<p>
+  = @event.body
+</p>
+<div id="paintings">
+    <div class="painting">
+      -unless @event.image==nil
+        = image_tag @event.image.data_url.to_s
+    </div>
+</div>
+</div>
+</div>
+-if @event_tags
+<div class="panel panel-info">
+  <div class="panel-heading">Tags:</div>
+  <div class="panel-body">
+        -@event_tags.each do |tag|
+          =link_to tag.name, tag
+          =" "
+  </div>
+</div>
+= link_to 'Edit', edit_event_path(@event)
+| |
+= link_to 'Back', events_path
+<p id="notice" class="bg-info h3"> 
+  =notice
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+   -unless @event.comments.empty?
+  <h2> 
+    =pluralize(@event.comments.size, 'comment')
+  </h2>
+
+  <div id="comments">
+   -for comment in @event.comments 
+    <div class="comment">
+      <strong>
+        = h(comment.author)
+      </strong>
+      <em>
+        =" on "
+        = comment.created_at.strftime('%b %d, %Y at %H:%M')
+      </em>
+      =simple_format comment.body
+    </div>
+  </div>
+</div>
+</div>
+
+<h3>Add your comment:</h3>
+ = render :partial => 'comments/form'
+</div>

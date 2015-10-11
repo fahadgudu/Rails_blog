@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      a class="navbar-brand" href=root_url Killer Blog
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        li  = link_to 'Home', root_url
+        li class="active" = link_to 'Blogs', posts_path 
+        li = link_to 'Events', events_path
+        li = link_to 'Users', users_path
+      </ul>
+    </div>
+  </div>
+</nav>
+.container
+  h1
+    Editing Post
+  .jumbotron
+    = render 'form'
+  h3
+    = link_to 'Show', @post
+    | |
+    = link_to 'Back', post_path
