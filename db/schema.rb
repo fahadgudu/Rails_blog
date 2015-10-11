@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006095042) do
+ActiveRecord::Schema.define(version: 20151008114700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,13 @@ ActiveRecord::Schema.define(version: 20151006095042) do
     t.string   "start_time"
     t.text     "body"
     t.text     "author"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.text     "city",       default: "Nowhere"
+    t.integer  "tag_ids",    default: [],                     array: true
   end
+
+  add_index "events", ["tag_ids"], name: "index_events_on_tag_ids", using: :gin
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -63,5 +67,17 @@ ActiveRecord::Schema.define(version: 20151006095042) do
     t.string "name"
     t.string "slug"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "surname"
+    t.string   "city"
+    t.integer  "age"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "tag_ids",    default: [],              array: true
+  end
+
+  add_index "users", ["tag_ids"], name: "index_users_on_tag_ids", using: :gin
 
 end
