@@ -5,7 +5,7 @@ namespace :populate do
   task :posts => [:environment] do
     tags = [1,2,3,4,5,6,7,8,9,10]
     Post.populate(150..200) do |post|
-      post.title = Populator.words(5..10)
+      post.title = Populator.sentences(1)
       post.body = Populator.paragraphs(2..5)
       post.author = Faker::Name.name
       post.tag_ids = "{#{tags.sample(Random.new.rand(2..5)).join(",")}}"
@@ -85,7 +85,7 @@ namespace :populate do
   task :events => [:environment] do
     tags = [1,2,3,4,5,6,7,8,9,10]
     Event.populate(30..40) do |event|
-      event.title = Populator.words(5..10)
+      event.title = Populator.sentences(1)
       event.body = Populator.paragraphs(2..5)
       event.author = Faker::Name.name
       event.start_time = Faker::Date.between(5.days.ago, 365.days.from_now)
