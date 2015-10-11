@@ -40,18 +40,20 @@ namespace :populate do
         i = i+1
       rescue OpenURI::HTTPError => e
         if e.message == '404 Not Found'
-        open("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg", 'wb') do |file|
-          file << open("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-12000.jpg").read
-        end
-        image = Magick::Image.read("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg").first
-        image.resize_to_fit!(800, 10000)
-        image.write("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg")
-        asset.assetable_id = post_no
-        asset.assetable_type = 'Post'
-        asset.filename = "image-#{i}.jpg"
-        asset.type = "Image"
-        post_no = post_no - 1
-        i = i+1
+          begin
+            open("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg", 'wb') do |file|
+              file << open("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-12000.jpg").read
+            end
+            image = Magick::Image.read("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg").first
+            image.resize_to_fit!(800, 10000)
+            image.write("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg")
+            asset.assetable_id = post_no
+            asset.assetable_type = 'Post'
+            asset.filename = "image-#{i}.jpg"
+            asset.type = "Image"
+            post_no = post_no - 1
+            i = i+1
+          end
         else
           raise e
         end
