@@ -22,10 +22,26 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+# File upload
 gem 'carrierwave'
+# Stylized html tag <select>
 gem 'select2-rails'
+# PDF generator
 gem 'prawn'
+# Fills DB with random data
+gem 'populator'
+# Generates random people and city names
+gem 'faker'
+# Generates ASCII schemas of models 
+gem 'annotate'
+# Adds automatic pages to html
+gem 'kaminari'
+# Slim templates
+gem 'slim'
+# Resizes images
+gem 'rmagick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
