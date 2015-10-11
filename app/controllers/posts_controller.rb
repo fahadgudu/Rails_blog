@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   # GET /posts/1
@@ -34,6 +34,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @tags = Tag.all
   end
 
   # POST /posts
@@ -55,6 +56,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @post.tag_ids = params[:tag_ids]
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }

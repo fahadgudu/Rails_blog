@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.page(params[:page]).per(15)
   end
 
   # GET /events/1
@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @commentable = @event
     @comments = @commentable.comments
     @comment = Comment.new
+    @event_tags = Tag.where(id: @event.tag_ids)
   end
 
   # GET /events/new
@@ -21,17 +22,19 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.build_image
     @event.build_attachment
+    @tags = Tag.all
   end
 
   # GET /events/1/edit
   def edit
+    @tags = Tag.all
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.tag_ids = params[:tag_ids]
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -46,6 +49,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event.tag_ids = params[:tag_ids]
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
