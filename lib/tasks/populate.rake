@@ -25,7 +25,7 @@ namespace :populate do
     post_no = Post.last.id #latest added post
     Asset.populate(50..100) do |asset|
       begin
-        Dir.mkdir("#{Rails.root}/public/uploads/image/data/#{asset.id}")
+        Dir.mkdir("#{Rails.root}/public/uploads/image/data/#{asset.id}") unless File.exists? "#{Rails.root}/public/uploads/image/data/#{asset.id}"
         open("#{Rails.root}/public/uploads/image/data/#{asset.id}/image-#{i}.jpg", 'wb') do |file|
           file << open("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-#{i}.jpg").read
         end

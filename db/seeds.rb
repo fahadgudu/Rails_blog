@@ -8,4 +8,4 @@
     Tag.create([{name: 'News', slug: 'news'}, {name: 'Image', slug: 'image'},{name: 'Ruby', slug: 'ruby'}])
     Tag.create([{name: 'Person', slug: 'person'}, {name: 'Text', slug: 'text'},{name: 'Star', slug: 'star'}])
     Tag.create([{name: 'Doge', slug: 'doge'}, {name: 'Wut', slug: 'wut'},{name: 'Interests', slug: 'interests'}])
-    Tag.create([{name: 'Longest tag ever created noone knows why', slug: 'longest_tag'}])
+    Tag.create({name: 'Longest tag ever created noone knows why', slug: 'longest_tag'})
