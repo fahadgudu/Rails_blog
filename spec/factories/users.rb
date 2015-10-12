@@ -14,7 +14,14 @@
 
 FactoryGirl.define do
   factory :user do
-    
+    username "John"
+    surname "SEEEEEEEEEEEENAAAAAAAAAAAAAAAAAAAAAAAAA"
+    city "Mordor"
+    age "25"
+
+    factory :invalid_user do
+      age "Test"
+    end
   end
 
 end

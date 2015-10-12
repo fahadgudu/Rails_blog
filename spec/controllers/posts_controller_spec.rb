@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   describe "GET #index" do
     it "assigns all posts as @posts" do
-      #post = Post.create! valid_attributes
       post = FactoryGirl.create(:post)
       get :index, {}
       expect(assigns(:posts)).to eq([post])
@@ -12,7 +11,6 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested post as @post" do
-      #post = Post.create! valid_attributes
       post = FactoryGirl.create(:post)
       get :show, {:id => post.to_param}
       expect(assigns(:post)).to eq(post)
@@ -28,7 +26,6 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested post as @post" do
-      #post = Post.create! valid_attributes
       post = FactoryGirl.create(:post)
       get :edit, {:id => post.to_param}
       expect(assigns(:post)).to eq(post)
@@ -100,9 +97,6 @@ RSpec.describe PostsController, type: :controller do
 
     context "with invalid params" do
       it "does not change the @post's attributes" do
-        #post = @post
-        #put :update, {:id => post.to_param, :post => FactoryGirl.attributes_for(:invalid_post)}
-        #expect(assigns(:post)).to eq(post)
         put :update, id: @post,
           post: FactoryGirl.attributes_for(:post,
             title: 'Check', body: nil)
