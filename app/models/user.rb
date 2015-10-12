@@ -14,8 +14,8 @@
 
 class User < ActiveRecord::Base
   include Taggable
-  validates_presence_of :name, :surname, :age
-  validates :name, length: {maximum: 255}
+  validates_presence_of :username, :surname, :age, :city
+  validates :username, length: {maximum: 255}
   validates :surname, length: {maximum: 255}
   validates :age, numericality: { only_integer: true }
 

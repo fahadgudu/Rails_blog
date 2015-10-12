@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :destroy]
+
   def index
     @users = User.page(params[:page]).per(15)
   end
@@ -6,7 +8,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
     @commentable = @user
     @comments = @commentable.comments
     @comment = Comment.new
@@ -15,4 +16,18 @@ class UsersController < ApplicationController
       format.html
     end
   end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

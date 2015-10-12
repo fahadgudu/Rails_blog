@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :assets
-  resources :users, only: [:show, :index] do
+  resources :users, only: [:show, :index, :destroy] do
     resources :comments, only: [:create, :new, :index]
   end
   resources :tags, only: [:show]
