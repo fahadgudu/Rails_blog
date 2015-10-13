@@ -1,3 +1,9 @@
+<style>
+  ="p.bgcolor {background-color: #{@post.bgcolor};}"
+  ="p.custom_font_color {color: #{@post.color};}"
+  ="p.custom_font_size {font-size: #{@post.font_size}px;}"
+
+</style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -30,7 +36,7 @@
 </p>
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>
+    <p class="custom_font_color custom_font_size bgcolor">
      = @post.body
     </p>
     -unless @post.image==nil

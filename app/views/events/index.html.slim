@@ -44,10 +44,10 @@
           = event.start_time 
         </td>
         <td>
-          = link_to 'Show', event 
+          = link_to 'Show', event
         </td>
         <td>
-          = link_to 'Edit', edit_event_path(event) 
+          = link_to 'Edit', edit_event_path(event), data: {no_turbolink: true}
         </td>
         <td>
           = link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } 
@@ -57,5 +57,5 @@
 </table>
 =paginate @events
 <br>
-a href= new_event_path class="btn btn-success btn-lg" role="button" Create event!
+a href= new_event_path class="btn btn-success btn-lg" role="button" data-no-turbolink="true" Create event! 
 </div>

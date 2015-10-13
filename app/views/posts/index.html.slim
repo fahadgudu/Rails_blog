@@ -14,14 +14,14 @@
   </div>
 </nav>
 
-<p id="notice">
-  = notice 
-</p>
+
 <div class="container">
 <div class= "jumbotron">
 <h1>Listing Posts</h1>
 </div>
-
+<p id="notice" class="bg-info h3">
+  = notice
+</p>
 <table class="table table-striped table-bordered" >
   <thead>
     <tr>
@@ -38,9 +38,9 @@
         td
           = post.author
         td
-          = link_to 'Show', post
+          = link_to 'Show', post, data: {no_turbolink: true}
         td
-          = link_to 'Edit', edit_post_path(post)
+          = link_to 'Edit', edit_post_path(post), data: {no_turbolink: true}
         td
           = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
       </tr>
@@ -48,5 +48,5 @@
 </table>
 =paginate @posts
 <br>
-a href= new_post_path class="btn btn-success btn-lg" role="button" Create post!
+a href= new_post_path class="btn btn-success btn-lg" role="button" data-no-turbolink="true" Create post!
 </div>
