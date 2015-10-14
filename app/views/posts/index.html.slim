@@ -32,18 +32,18 @@
   </thead>
   <tbody>
     -@posts.each do |post|
-      <tr>
-        td
-          = post.title
-        td
-          = post.author
-        td
-          = link_to 'Show', post, data: {no_turbolink: true}
-        td
-          = link_to 'Edit', edit_post_path(post), data: {no_turbolink: true}
-        td
-          = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-      </tr>
+      -cache post
+        tr
+          td
+            = post.title
+          td
+            = post.author
+          td
+            = link_to 'Show', post, data: {no_turbolink: true}
+          td
+            = link_to 'Edit', edit_post_path(post), data: {no_turbolink: true}
+          td
+            = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
   </tbody> 
 </table>
 =paginate @posts

@@ -15,6 +15,11 @@ class EventsController < ApplicationController
     @comments = @commentable.comments
     @comment = Comment.new
     @event_tags = Tag.where(id: @event.tag_ids)
+    if stale?(@event)
+      respond_to do |format|
+        format.html
+      end
+    end
   end
 
   # GET /events/new
