@@ -32,8 +32,9 @@
       br
       = f.text_field :city, class:'form-control'
 
-    =f.fields_for :image do |attachment_f|
+    =f.fields_for :attachment do |attachment_f|
       br
+      = attachment_f.label :data
       = attachment_f.file_field :data
       br
     -if @tags

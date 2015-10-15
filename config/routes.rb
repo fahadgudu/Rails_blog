@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get "/uploads/attachment/:id/:basename.:extension", :controller => "events", :action => "download"
+
   resources :assets
   resources :users, only: [:show, :index, :destroy] do
     resources :comments, only: [:create, :new, :index]

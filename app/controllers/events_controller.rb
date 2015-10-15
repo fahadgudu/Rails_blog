@@ -25,7 +25,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @event.build_image
     @event.build_attachment
     @tags = Tag.all
   end
@@ -76,14 +75,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def download
+    @event = Event.find(params[:id])
+    path = "public#{@event.attachment.data_url}"
+    send_file path, :x_sendfile=>true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :author, :body, :start_time, attachment_attributes: [:data], image_attributes: [:data])
+      params.require(:event).permit(:title, :author, :body, :start_time, attachment_attributes: [:data])
     end
 end

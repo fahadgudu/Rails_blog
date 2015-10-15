@@ -39,8 +39,8 @@
 </p>
 <div id="paintings">
     <div class="painting">
-      -unless @event.image==nil
-        = image_tag @event.image.data_url.to_s
+      -unless @event.attachment==nil
+        = link_to File.basename(@event.attachment.data_url), "/uploads/attachment/#{@event.attachment.assetable_id}/#{File.basename(@event.attachment.data_url)}"
     </div>
 </div>
 </div>
