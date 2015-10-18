@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
-      redirect_to @commentable, notice: "Comment created."
+      html = render @comment, layout: false
+      Pusher['comments'].trigger 'comments/create', html
     else
       render :new
     end

@@ -44,6 +44,8 @@ gem 'slim'
 gem 'rmagick'
 # Adds jquery color picker
 gem 'jquery-minicolors-rails'
+# WebSockets
+gem 'pusher'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.minicolors
 //= require turbolinks
-//= require bootstrap-sprockets
 //= require select2
 //= require_tree .
 

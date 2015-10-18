@@ -56,27 +56,13 @@ a href= post_path(@post, :format => "pdf") class="btn btn-info btn-lg" role="but
 </p>
 <div class="panel panel-default">
   <div class="panel-body">
-   -unless @post.comments.empty?
-  <h2>
-    = pluralize(@post.comments.size, 'comment')
-  </h2>
-
-  <div id="comments">
-   -for comment in @post.comments
-    <div class="comment">
-      <strong>
-        = h(comment.author)
-      </strong>
-      <em>
-        =" on "
-        = comment.created_at.strftime('%b %d, %Y at %H:%M')
-      </em>
-      =simple_format comment.body
+    h2
+      =pluralize(@post.comments.size, 'comment')
+    =render @post.comments
     </div>
   </div>
-</div>
+  <h3>Add your comment:</h3>
+  = render :partial => 'comments/form'
 </div>
 
-<h3>Add your comment:</h3>
- = render :partial => 'comments/form'
-</div>
+= javascript_include_tag "pusher.js"

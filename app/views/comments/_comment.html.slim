@@ -1,0 +1,14 @@
+.media style="display: none;"
+  .media-body
+    <div id="comments">
+      <div class="comment">
+        <strong>
+          = h(comment.author)
+        </strong>
+        <em>
+          =" on "
+          = comment.created_at.strftime('%b %d, %Y at %H:%M')
+        </em>
+        =simple_format comment.body
+      </div>
+    </div>
