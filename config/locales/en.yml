@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home: "Home"
+  posts: "Posts"
+  events: "Events"
+  users: "Users"
+  tagcloud: "Tag Cloud"
+  lastentries: "Last Entries"
+  show: "Show"
+  edit: "Edit"
+  delete: "Delete"
+  confirm: "Are you sure?"
+  created: "Created "
+  table:
+    title:  "Title"
+    author: "Author"
+
+  userpage:
+    listing: "Listing Users"
+    table:
+      username: "Username"
+      surname: "Surname"
+      age: "Age"
+      actions: "Actions"

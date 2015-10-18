@@ -1,0 +1,23 @@
+ru:
+  home: "Главная"
+  posts: "Посты"
+  events: "События"
+  users: "Люди"
+  tagcloud: "Облако тегов"
+  lastentries: "Последние Записи"
+  show: "Открыть"
+  edit: "Ред."
+  delete: "Удалить"
+  confirm: "Вы уверены?"
+  created: "Создано "
+  table:
+    title:  "Название"
+    author: "Автор"
+
+  userpage:
+    listing: "Список"
+    table:
+      username: "Username"
+      surname: "Ф.И.О."
+      age: "Возраст"
+      actions: "Дествия"

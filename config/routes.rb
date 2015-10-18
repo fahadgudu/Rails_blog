@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
 
+  scope "(:locale)", locale: /en|ru/ do
+    resources :posts
+    resources :events
+    resources :users
+    resources :tags
+  end
+
+  get '/:locale' => 'welcome#index'
+  
   get "/uploads/attachment/:id/:basename.:extension", :controller => "events", :action => "download"
 
   resources :assets
+
   resources :users, only: [:show, :index, :destroy] do
     resources :comments, only: [:create, :new, :index]
   end
