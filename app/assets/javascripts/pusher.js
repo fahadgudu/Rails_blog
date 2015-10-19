@@ -10,8 +10,8 @@ $( document ).ready(function() {
     var pusher = new Pusher('a16839422f89659d4616', {
       encrypted: true
     });
-    
-    var channel = pusher.subscribe('comments');
+    var url = window.location.pathname.split('/');
+    var channel = pusher.subscribe(url[1] + url[2]);
     channel.bind('comments/create', function(html) {
       $("#new_comment")[0].reset();
       $(String(html)).prependTo("#comments").fadeIn('slow')

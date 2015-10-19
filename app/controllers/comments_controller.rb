@@ -12,8 +12,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     if @comment.save
+      path = request.path.split('/')
+      channel = path[1] + path[2]
       html = render @comment, layout: false
-      Pusher['comments'].trigger 'comments/create', html
+      Pusher[channel].trigger 'comments/create', html
     else
       render :new
     end
