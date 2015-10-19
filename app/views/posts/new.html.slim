@@ -5,18 +5,18 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        li  = link_to 'Home', root_url
-        li class="active" = link_to 'Blogs', posts_path 
-        li = link_to 'Events', events_path
-        li = link_to 'Users', users_path
+        li  = link_to I18n.t('home'), root_url
+        li class="active" = link_to I18n.t('posts'), posts_path 
+        li = link_to I18n.t('events'), events_path
+        li = link_to I18n.t('users'), users_path
       </ul>
     </div>
   </div>
 </nav>
 .container
   h1
-   New Post
+   =t 'postpage.new_post'
   .jumbotron
     = render 'form'
   h3
-    = link_to 'Back', posts_path
+    = link_to I18n.t('back'), posts_path

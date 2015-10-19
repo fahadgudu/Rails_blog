@@ -1,3 +1,73 @@
+en:
+  home: "Home"
+  posts: "Posts"
+  events: "Events"
+  users: "Users"
+  tags: "Tags:"
+  tagcloud: "Tag Cloud"
+  lastentries: "Last Entries"
+  show: "Show"
+  edit: "Edit"
+  delete: "Delete"
+  back: "Back"
+  confirm: "Are you sure?"
+  created: "Created "
+  create_post: "Create Post!"
+  added: " added "
+  add_comment: "Add your comment:"
+  table:
+    title:  "Title"
+    author: "Author"
+    actions: "Actions"
+
+  userpage:
+    listing: "Listing Users"
+    table:
+      username: "Username"
+      surname: "Surname"
+      age: "Age"
+      actions: "Actions"
+    withusername: " with username "
+    from: " from "
+    in_age: " in age of "
+
+  tagpage:
+    search_by: "Searching by "
+    user: "User: "
+    post: "Post: "
+    event: "Event: "
+
+  postpage:
+    editing: "Editing post"
+    listing: "Listing Posts"
+    new_post: "New Post"
+
+  eventpage:
+    editing: "Editing Event"
+    listing: "Listing Events"
+    new_event: "New Event"
+    table:
+      place: "Place"
+      time: "Time"
+
+  commentpage:
+    added: " at "
+
+  helpers:
+    label:
+      post:
+        title: "Title:"
+        body: "Body:"
+        author: "Author:"
+        bgcolor: "Background color:"
+        color: "Font color:"
+        font_size: "Font size:"
+      event:
+        title: "Title:"
+        body: "Body:"
+        author: "Author:"
+        start_time: "Start time:"
+        city: "City"
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -18,27 +88,3 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
-en:
-  home: "Home"
-  posts: "Posts"
-  events: "Events"
-  users: "Users"
-  tagcloud: "Tag Cloud"
-  lastentries: "Last Entries"
-  show: "Show"
-  edit: "Edit"
-  delete: "Delete"
-  confirm: "Are you sure?"
-  created: "Created "
-  table:
-    title:  "Title"
-    author: "Author"
-
-  userpage:
-    listing: "Listing Users"
-    table:
-      username: "Username"
-      surname: "Surname"
-      age: "Age"
-      actions: "Actions"

@@ -21,20 +21,20 @@
   </h2> 
 <p>
    i
-    =t "created" 
+    =t 'created'
     = @user.created_at.strftime('%b %d, %Y at %H:%M')
 </p>
 <div class="panel panel-default">
   <div class="panel-body">
     <p>
      = @user.surname
-     =" with username "
+     =t 'userpage.withusername'
      i
       b
        = @user.username
-     =" from "
+     =t 'userpage.from'
      =@user.city
-     =" in age of "
+     =t 'userpage.in_age'
      =@user.age
     </p>
     -unless @user.image==nil
@@ -44,7 +44,9 @@
 
 -if @user_tags
 <div class="panel panel-info">
-  <div class="panel-heading">Tags:</div>
+  <div class="panel-heading">
+    =t 'tags'
+  </div>
   <div class="panel-body">
         -@user_tags.each do |tag|
           =link_to tag.name, tag
@@ -61,10 +63,6 @@
     =render @user.comments
     </div>
   </div>
-  <h3>Add your comment:</h3>
-  = render :partial => 'comments/form'
-</div>
-
-<h3>Add your comment:</h3>
- = render :partial => 'comments/form'
+  h3
+    =t 'add_comment'
 </div>

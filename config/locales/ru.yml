@@ -3,16 +3,22 @@ ru:
   posts: "Посты"
   events: "События"
   users: "Люди"
+  tags: "Теги:"
   tagcloud: "Облако тегов"
   lastentries: "Последние Записи"
-  show: "Открыть"
+  show: "Показать"
   edit: "Ред."
   delete: "Удалить"
+  back: "Назад"
   confirm: "Вы уверены?"
   created: "Создано "
+  create_post: "Создать Пост!"
+  added: " добавил(а) "
+  add_comment: "Добавьте свой комментарий:"
   table:
     title:  "Название"
     author: "Автор"
+    actions: "Действия"
 
   userpage:
     listing: "Список"
@@ -21,3 +27,44 @@ ru:
       surname: "Ф.И.О."
       age: "Возраст"
       actions: "Дествия"
+    withusername: " с ником "
+    from: " из "
+    in_age: " в возрасте "
+
+  tagpage:
+    search_by: "Поиск по "
+    user: "Пользователь: "
+    post: "Пост: "
+    event: "Событие: "
+
+  postpage:
+    editing: "Редактирование поста"
+    listing: "Список Постов"
+    new_post: "Новый Пост"
+
+  eventpage:
+    editing: "Редактирование События"
+    listing: "Список Событий"
+    new_event: "Новое Событие"
+    table:
+      place: "Город"
+      time: "Время"
+
+  commentpage:
+    added: " в "
+
+  helpers:
+    label:
+      post:
+        title: "Название:"
+        body: "Текст:"
+        author: "Автор:"
+        bgcolor: "Цвет фона:"
+        color: "Цвет текста:"
+        font_size: "Размер шрифта:"
+      event:
+        title: "Название:"
+        body: "Текст:"
+        author: "Автор:"
+        start_time: "Время начала:"
+        city: "Город:"

@@ -6,8 +6,8 @@
           = h(comment.author)
         </strong>
         <em>
-          =" on "
-          = comment.created_at.strftime('%b %d, %Y at %H:%M')
+          =t 'commentpage.added'
+          = comment.created_at.strftime('%H:%M %b %d, %Y')
         </em>
         =simple_format comment.body
       </div>

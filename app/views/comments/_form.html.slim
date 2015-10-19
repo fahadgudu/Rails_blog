@@ -9,9 +9,9 @@
     </div>
 
   .field
-    = f.text_area :author, rows: 1, class: 'form-control'
+    = f.text_field :author, rows: 1, class: 'form-control', placeholder: 'Name'
   .field 
-    = f.text_area :body, rows: 8, class: 'form-control'
+    = f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Text'
   <div class="actions">
-    = f.submit
+    = f.submit "Submit", class: "btn btn-success"
   </div>

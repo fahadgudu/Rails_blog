@@ -10,10 +10,10 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        li  = link_to 'Home', root_url
-        li class="active" = link_to 'Blogs', posts_path 
-        li = link_to 'Events', events_path
-        li = link_to 'Users', users_path
+        li  = link_to I18n.t('home'), root_url
+        li class="active" = link_to I18n.t('posts'), posts_path 
+        li = link_to I18n.t('events'), events_path
+        li = link_to I18n.t('users'), users_path
       </ul>
     </div>
   </div>
@@ -24,12 +24,12 @@
       = @post.title
  
   .h6
-    = link_to 'Edit', edit_post_path(@post)
+    = link_to I18n.t('edit'), edit_post_path(@post)
 
 <p>
    i
     = @post.author
-    =" added " 
+    =t 'added' 
     = @post.created_at.strftime('%b %d, %Y at %H:%M')
 </p>
 .panel class="panel-default"
@@ -44,7 +44,7 @@
   - cache @post_tag
     .panel class="panel-info"
       .panel-heading
-        |Tags:
+        =t 'tags'
       .panel-body
         -@post_tags.each do |tag|
           =link_to tag.name, tag
@@ -61,8 +61,7 @@ a href= post_path(@post, :format => "pdf") class="btn btn-info btn-lg" role="but
     =render @post.comments
     </div>
   </div>
-  <h3>Add your comment:</h3>
+  h3
+   =t 'add_comment'
   = render :partial => 'comments/form'
 </div>
-
-= javascript_include_tag "pusher.js"

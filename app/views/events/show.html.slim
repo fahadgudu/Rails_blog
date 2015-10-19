@@ -5,10 +5,10 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        li  = link_to 'Home', root_url
-        li = link_to 'Blogs', posts_path 
-        li class="active" = link_to 'Events', events_path
-        li = link_to 'Users', users_path
+        li = link_to I18n.t('home'), root_url
+        li = link_to I18n.t('posts'), posts_path 
+        li class="active" = link_to I18n.t('events'), events_path
+        li = link_to I18n.t('users'), users_path
       </ul>
     </div>
   </div>
@@ -22,13 +22,13 @@
     </strong>
   </h2> 
   <h6>
-    = link_to 'Edit', edit_event_path(@event)
+    = link_to I18n.t('edit'), edit_event_path(@event)
   </h6>
 
 <p>
   <i> 
     =@event.author 
-    =" added "
+    =t 'added'
     =@event.created_at.strftime('%b %d, %Y at %H:%M')
   </i>
 </p>
@@ -47,23 +47,24 @@
 </div>
 -if @event_tags
 <div class="panel panel-info">
-  <div class="panel-heading">Tags:</div>
+  <div class="panel-heading">
+    =t 'tags'
+  </div>
   <div class="panel-body">
         -@event_tags.each do |tag|
           =link_to tag.name, tag
           =" "
   </div>
 </div>
-= link_to 'Edit', edit_event_path(@event)
+= link_to I18n.t('edit'), edit_event_path(@event)
 | |
-= link_to 'Back', events_path
+= link_to I18n.t('back'), events_path
 <p id="notice" class="bg-info h3"> 
   =notice
 </p>
 <p id="notice" class="bg-info h3">
   = notice
 </p>
-.comments
 <div class="panel panel-default">
   <div class="panel-body">
    -unless @event.comments.empty?
@@ -72,12 +73,7 @@
   =render @event.comments
   </div>
 </div>
-<h3>Add your comment:</h3>
- = render :partial => 'comments/form'
+  h3
+    =t 'add_comment'
+= render :partial => 'comments/form'
 </div>
-
-
-<h3>Add your comment:</h3>
- = render :partial => 'comments/form'
-</div>
-= javascript_include_tag "pusher.js"
